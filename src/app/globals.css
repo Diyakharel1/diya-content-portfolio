@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f3efe8;
+  --bg-elevated: #ebe4d9;
+  --bg-deep: #e2dacd;
+  --ink: #1a1c1e;
+  --muted: #5c5a56;
+  --muted-soft: #8a8680;
+  --accent: #2a7a72;
+  --accent-soft: rgba(42, 122, 114, 0.12);
+  --accent-strong: #1f5f59;
+  --film: #12161a;
+  --film-soft: #1c2228;
+  --line: rgba(26, 28, 30, 0.1);
+  --line-strong: rgba(26, 28, 30, 0.16);
+  --cream: #f7f3ec;
+  --shadow: 0 18px 50px rgba(18, 22, 26, 0.14);
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: #14181c;
+  --bg-elevated: #1c2228;
+  --bg-deep: #0e1216;
+  --ink: #f3efe8;
+  --muted: #b0aaa2;
+  --muted-soft: #7f7a73;
+  --accent: #4aa89e;
+  --accent-soft: rgba(74, 168, 158, 0.16);
+  --accent-strong: #2f8a80;
+  --film: #0a0d10;
+  --film-soft: #151a1f;
+  --line: rgba(243, 239, 232, 0.12);
+  --line-strong: rgba(243, 239, 232, 0.2);
+  --cream: #f7f3ec;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-muted-soft: var(--muted-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-strong: var(--accent-strong);
+  --color-film: var(--film);
+  --color-film-soft: var(--film-soft);
+  --color-line: var(--line);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-fraunces);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  line-height: 1.7;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--cream);
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.grain::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html.dark .grain::before {
+  opacity: 0.05;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.ken-burns {
+  animation: kenburns 18s ease-out forwards;
+}
+
+/*
+  Instagram embed cover: zoom into the video plane so likes / comments /
+  letterbox bars are clipped and footage fills the full 9:16 card.
+*/
+.reel-ig-cover {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transform: translate(-50%, -40%) scale(2.75);
+  transform-origin: center center;
+}
+
+/* Milder crop for photo posts (e.g. Humto) so framing stays closer to original. */
+.reel-ig-natural {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transform: translate(-50%, -42%) scale(1.35);
+  transform-origin: center center;
+}
