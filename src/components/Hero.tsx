@@ -124,12 +124,10 @@ export function Hero() {
               className="object-cover object-[center_36%]"
               sizes="(max-width: 768px) 90vw, 42vw"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent px-5 pb-5 pt-16">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-cream/90">
-                Bhaktapur, Nepal · Available for brands
-              </p>
-            </div>
           </div>
+          <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-muted-soft">
+            Bhaktapur, Nepal · Available for brand collaborations
+          </p>
         </motion.div>
       </div>
     </section>
